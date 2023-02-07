@@ -1,0 +1,274 @@
+:root{
+    --clr-root:#04d9ff;
+    --clr-bg:#00051d;
+    --clr-txt:#ee82ee;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: #23242a;
+    background: var(--clr-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.box {
+    position: relative;
+    width: 350px;
+    height: 400px;
+    background: #1c1c1c;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.box:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg, transparent, #45f3ff, #45f3ff);
+    transform-origin: bottom right;
+    /* background: #20b2aa; */
+    animation: animate 8s linear infinite;
+}
+
+.box::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 350px;
+    height: 420px;
+    background: linear-gradient(0deg, transparent, #45f3ff, #45f3ff);
+    transform-origin: bottom right;
+    /* background: #20b2aa; */
+    animation: animate 8s linear infinite;
+    animation-delay: -300s;
+}
+
+@keyframes animate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+.form {
+    position: absolute;
+    z-index: 10;
+    background: #23242a;
+    background: var(--clr-bg);
+    border-radius: 10px;
+    inset: 4px;
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;
+    justify-content: center; */
+}
+
+.form h2 {
+    color: #45f3ff;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.inputBox {
+    position: relative;
+    width: 300px;
+    margin-top: 35px;
+}
+
+.inputBox input {
+    position: relative;
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+    /* color: #23242a; */
+    color: var(--clr-bg);
+    font-size: 1.2rem;
+    z-index: 10;
+    font-weight: 600;
+}
+
+.inputBox span {
+    position: absolute;
+    left: 0;
+    padding: 20px 0px 10px;
+    font-size: 1rem;
+    color: #8f8f8f;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.inputBox input:valid~span,
+.inputBox input:focus~span {
+    transform: translateY(-34px);
+    color: #45f3ff;
+}
+
+.inputBox i {
+    position: absolute;
+    background: #45f3ff;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    border-radius: 5px;
+    pointer-events: none;
+    transition: 0.5s ease-in-out;
+    z-index: 9;
+}
+
+.inputBox input:valid~i,
+.inputBox input:focus~i {
+    height: 40px;
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+}
+
+.links a {
+    margin: 10px 0;
+    font-size: 0.8rem;
+    color: #8f8f8f;
+    text-decoration: none;
+}
+
+.links a:hover,
+.links a:nth-last-child(1) {
+    color: #45f3ff;
+}
+
+input[type='submit'] {
+    border: none;
+    outline: none;
+    background: #45f3ff;
+    padding: 11px 25px;
+    width: 100px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+}
+
+input[type='submit']:active {
+    opacity: 0.1;
+}
+
+@media screen and (width < 300px) {
+    .box{
+        width:270px
+    }
+    .box:before,.box::after{
+        width: 250px;
+    }
+
+    .form {
+        width:263px;
+        padding: 30px 15px;
+        margin-left:-1px;
+        margin-right:1.5px;
+
+    }
+
+    .inputBox i {
+        width: 80%;
+    }
+
+}
+
+/* =============================================== Neon Button=============================================== */
+.neon-body{
+    background:var(--clr-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.neon-button{
+    position: relative;
+    font-size: 1rem;
+    text-decoration: none;
+    border: .1em solid var(--clr-root);
+    padding: .25em 1em;
+    color: var(--clr-root);
+    text-shadow: 0 0 0.2em rgb(255, 255, 255, 0.363), 0 0 1em var(--clr-root);
+    box-shadow: inset 0 0 .4em 0 var(--clr-root) 0 0 .6em 0  var(--clr-root) ;
+    text-align: center;
+    padding: 11px 25px;
+    width: 100px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+}
+
+.neon-button::before{
+    content: '';
+    position: absolute;
+    background: linear-gradient(90deg, var(--clr-root)0%, var(--clr-txt) 50%, var(--clr-root) 100%);
+    top: 100%;
+    left: 0;
+    height: 110%;
+    width: 100%;
+    transform: perspective(1em) rotateX(45deg) scale(1.1, .3);
+    filter: blur(1em);
+    transition: 0.6s ease-in-out;
+    pointer-events: none;
+}
+
+.neon-button::after{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--clr-root); 
+     opacity: 0; 
+    z-index: -1;
+    box-shadow: 0 0 2em .5em var(--clr-root);
+}
+
+.neon-button:hover,
+ .neon-button:focus{
+    background: var(--clr-root);
+    color: var(--clr-bg);
+    text-shadow: none;
+    transition: .1s ease-in-out;
+    border-radius: 5px;
+}
+
+.neon-button:active {
+    opacity: 0.1;
+}
+
+.neon-button:hover::before,
+.neon-button:focus::before,
+.neon-button:hover::after,
+.neon-button:focus::after
+{
+    opacity: 1;
+    border-radius: 5px;
+
+}
